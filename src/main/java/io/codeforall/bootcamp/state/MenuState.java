@@ -23,7 +23,7 @@ public class MenuState implements GameState {
     }
 
     public void showMenu() {
-        title = new Text(250, 200, "FLAPPY CADET JAVA");
+        title = new Text(400, 200, "FLAPPY CADET JAVA");
         title.grow(50, 20);
         title.draw();
 

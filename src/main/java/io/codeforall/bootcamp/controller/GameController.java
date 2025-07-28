@@ -8,7 +8,6 @@ import io.codeforall.bootcamp.manager.GameManager;
 import io.codeforall.bootcamp.model.Bird;
 
 import io.codeforall.bootcamp.state.MenuState;
-import io.codeforall.bootcamp.state.PlayingState;
 
 import io.codeforall.bootcamp.strategy.Difficulty;
 import io.codeforall.bootcamp.strategy.DifficultyManager;
@@ -73,7 +72,25 @@ public class GameController implements KeyboardHandler {
         enter.setKey(KeyboardEvent.KEY_ENTER);
         keyboard.addEventListener(enter);
 
-        
+        KeyboardEvent key1 = new KeyboardEvent();
+        key1.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        key1.setKey(KeyboardEvent.KEY_1);
+        keyboard.addEventListener(key1);
+
+        KeyboardEvent key2 = new KeyboardEvent();
+        key2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        key2.setKey(KeyboardEvent.KEY_2);
+        keyboard.addEventListener(key2);
+
+        KeyboardEvent key3 = new KeyboardEvent();
+        key3.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        key3.setKey(KeyboardEvent.KEY_3);
+        keyboard.addEventListener(key3);
+
+        KeyboardEvent pause = new KeyboardEvent();
+        pause.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        pause.setKey(KeyboardEvent.KEY_ESC);
+        keyboard.addEventListener(pause);
     }
 
     @Override

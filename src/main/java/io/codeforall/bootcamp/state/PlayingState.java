@@ -74,6 +74,9 @@ public class PlayingState implements GameState {
     public void onKeyPress(KeyboardEvent event) {
         if (event.getKey() == KeyboardEvent.KEY_SPACE) {
             bird.jump();
+
+        } else if(event.getKey() == KeyboardEvent.KEY_ESC) {
+            stateManager.setState(new PauseState(stateManager, this));
         }
     }
 }
