@@ -3,7 +3,9 @@ package io.codeforall.bootcamp.state;
 import com.codeforall.simplegraphics.graphics.Text;
 import com.codeforall.simplegraphics.keyboard.KeyboardEvent;
 import io.codeforall.bootcamp.manager.GameManager;
+import io.codeforall.bootcamp.manager.ScoreManager;
 import io.codeforall.bootcamp.model.Bird;
+import io.codeforall.bootcamp.sound.SoundManager;
 import io.codeforall.bootcamp.strategy.Difficulty;
 import io.codeforall.bootcamp.strategy.DifficultyManager;
 import io.codeforall.bootcamp.view.GameView;
@@ -12,6 +14,7 @@ public class MenuState implements GameState {
 
     private StateManager stateManager;
     private Text title;
+    private Text highScoreText;
     private Text instructions;
     private Text difficultyText;
 
@@ -27,6 +30,11 @@ public class MenuState implements GameState {
         title.grow(100, 20);
         title.draw();
 
+        int highScore = ScoreManager.loadHighScore();
+        highScoreText = new Text(380, 320, "HIGH SCORE: " + highScore);
+        highScoreText.grow(10,5);
+        highScoreText.draw();
+
         instructions = new Text(350, 500, "PRESS <ENTER> TO START");
         instructions.grow(20, 10);
         instructions.draw();
@@ -34,10 +42,13 @@ public class MenuState implements GameState {
         difficultyText = new Text(300, 450, "PRESS 1: EASY | 2: NORMAL | 3: HARD");
         difficultyText.grow(10, 5);
         difficultyText.draw();
+
+        SoundManager.getInstance().playBackground("bg_music.wav");
     }
 
     public void clearMenu() {
         title.delete();
+        highScoreText.delete();
         instructions.delete();
         difficultyText.delete();
     }

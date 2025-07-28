@@ -7,6 +7,7 @@ import com.codeforall.simplegraphics.keyboard.KeyboardHandler;
 import io.codeforall.bootcamp.manager.GameManager;
 import io.codeforall.bootcamp.model.Bird;
 
+import io.codeforall.bootcamp.sound.SoundManager;
 import io.codeforall.bootcamp.state.MenuState;
 
 import io.codeforall.bootcamp.strategy.Difficulty;
@@ -91,10 +92,19 @@ public class GameController implements KeyboardHandler {
         pause.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         pause.setKey(KeyboardEvent.KEY_ESC);
         keyboard.addEventListener(pause);
+
+        KeyboardEvent mute = new KeyboardEvent();
+        mute.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        mute.setKey(KeyboardEvent.KEY_M);
+        keyboard.addEventListener(mute);
     }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_M) {
+            SoundManager.getInstance().toogleMute();
+        }
+
         gameManager.getStateManager().onKeyPress(keyboardEvent);
     }
 

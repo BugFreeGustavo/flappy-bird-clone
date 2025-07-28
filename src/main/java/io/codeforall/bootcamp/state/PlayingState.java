@@ -6,6 +6,7 @@ import io.codeforall.bootcamp.factory.PipeFactory;
 import io.codeforall.bootcamp.manager.GameManager;
 import io.codeforall.bootcamp.model.Bird;
 import io.codeforall.bootcamp.model.Pipe;
+import io.codeforall.bootcamp.sound.SoundManager;
 import io.codeforall.bootcamp.view.GameView;
 
 import java.util.ArrayList;
@@ -31,7 +32,6 @@ public class PlayingState implements GameState {
 
     @Override
     public void update() {
-        bird.applyGravity();
         updatePipes();
     }
 
@@ -61,11 +61,9 @@ public class PlayingState implements GameState {
             if (pipe.collidesWith(bird)) {
                 view.showGameOver();
                 stateManager.setState(new GameOverState(stateManager, bird, view, pipes));
+                SoundManager.getInstance().playEffect("game_over.wav");
+                SoundManager.getInstance().stopBackground();
                 return;
-            }
-
-            if(GameManager.getInstance().getScore() == 15) {
-                bird = new SlowFallBird(bird);
             }
         }
     }

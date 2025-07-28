@@ -2,6 +2,7 @@ package io.codeforall.bootcamp.model;
 
 import com.codeforall.simplegraphics.graphics.Color;
 import com.codeforall.simplegraphics.graphics.Rectangle;
+import io.codeforall.bootcamp.sound.SoundManager;
 import io.codeforall.bootcamp.strategy.FlyBehavior;
 import io.codeforall.bootcamp.strategy.NormalFly;
 
@@ -44,6 +45,7 @@ public class Bird {
 
     public void jump() {
         velocity = -10;
+        SoundManager.getInstance().playEffect("jump.wav");
     }
 
     public void increaseVelocity(int value) {
