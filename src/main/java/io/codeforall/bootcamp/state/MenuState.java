@@ -23,15 +23,15 @@ public class MenuState implements GameState {
     }
 
     public void showMenu() {
-        title = new Text(400, 200, "FLAPPY CADET JAVA");
-        title.grow(50, 20);
+        title = new Text(400, 280, "FLAPPY CADET JAVA");
+        title.grow(100, 20);
         title.draw();
 
-        instructions = new Text(260, 250, "PRESS <ENTER> TO START");
+        instructions = new Text(350, 500, "PRESS <ENTER> TO START");
         instructions.grow(20, 10);
         instructions.draw();
 
-        difficultyText = new Text(260, 280, "PRESS 1: EASY | 2: NORMAL | 3: HARD");
+        difficultyText = new Text(300, 450, "PRESS 1: EASY | 2: NORMAL | 3: HARD");
         difficultyText.grow(10, 5);
         difficultyText.draw();
     }
